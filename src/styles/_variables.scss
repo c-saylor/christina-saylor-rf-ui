@@ -1,0 +1,14 @@
+// Colors
+$color-primary: #5c00dc;
+$color-white: #fff;
+$color-black: #000;
+$color-medium-grey: #777;
+$color-light-grey: #f5f5f5;
+$color-dark-purple: #393551;
+$color-border: #cbc6de;
+
+// Breakpoints
+// At or below this width (tablet + mobile) the sidebar becomes a slide-in overlay.
+$breakpoint-tablet: 1024px;
+// At or below this width (phones) multi-block cards stack their blocks vertically.
+$breakpoint-mobile: 600px;

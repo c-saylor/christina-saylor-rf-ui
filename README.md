@@ -1,46 +1,54 @@
-# Getting Started with Create React App
+# RainFocus Code Assessment
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Prepared based on sample designs provided for assessment.
 
-## Available Scripts
+## Getting started
 
-In the project directory, you can run:
+Requires Node.js and npm.
 
-### `npm start`
+```bash
+npm install
+npm start        # dev server at http://localhost:3000
+npm run build    # production build in /build
+npm run format   # format src with Prettier
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Tech stack
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- React 19 + TypeScript (Create React App)
+- React Router 7 (`HashRouter`)
+- Sass
 
-### `npm test`
+## Project structure
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+src/
+  App.tsx              App shell: sidebar, mobile top bar, routes
+  App.scss             All styles
+  config/navItems.tsx  Nav items and their routes
+  components/          Sidebar, Search, EventHeader, StepCard, SidebarContext
+  pages/               Attendees, Placeholder
+  styles/              Sass variables
+  assets/              Icons and images
+```
 
-### `npm run build`
+## Approach
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- React chosen as frameword due to familiarity
+- Navigation/routes placed in config/navItems as a single source of truth for App.tsx and Sidebar.tsx
+- HashRouter chosen for routing based on requirement to run in browser without building
+- Components used where possible for reusability + readability
+- Responsive design centers mostly around the use of flex/grid for dynamic resizing of elements. For mobile/tablet screens, the sidebar is replaced by a top bar with a collapsible side panel that slides in/out as this is common functionality and familiar to most users.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Accessibility
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Basic accessibility standards are met (alt text for images, screen-reader consideration)
+- When run through google lighthouse, recieves an accessibility score of 96. The only error is a lack of significant contrast between background and foreground colors anywhere the $color-medium-grey is used (user icon, mega-nav). These colors were pulled directly from Figma so I have not altered them to pass accessibility for the sake of the assessment.
 
-### `npm run eject`
+## Assumptions
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- In a real-world scenario I would work with the designers/project lead for clarification in some areas. Some assumptions were made to best fit the designs:
+    - Unclear as to whether the RainFocus logo is the product logo with the summit logo being the first "organization" or if both are organizations. I assumed the product is RainFocus branded and treated the summit as the only organization.
+    - In the designs, the active page is the mega nav is "Attendees". The content of the main area seems to align closer to the "Guide" screen, kept it accurate to the design for sake of assessment. 
+    - For the subnav under Attendees, I assumed the first child should be selected since I'm unaware if the parent navigation has it's own content. 
+    - Instead of assuming user stories/functionality for the "edit event" feature, I've left this button without function. 
